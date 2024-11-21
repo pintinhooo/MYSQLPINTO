@@ -28,9 +28,17 @@ ON categorias.id_categoria = filmes.id_categoria
 WHERE categorias.nome_categoria = "SPORTS"
 ORDER BY filmes.titulo_filme ASC;
 
-CREATE TABLE autores (
-	id_autor INT,
-	
-
-
+CREATE TABLE atores (
+	id_ator INT,
+	nome varchar(20),
+    sobrenome varchar(20),
+    id_filme INT,
+    id_categoria INT,
+    PRIMARY KEY(id_ator),
+	FOREIGN KEY(id_filme) REFERENCES filmes(id_filme),
+    FOREIGN KEY(id_categoria) REFERENCES categorias(id_categoria)
 );
+
+#21/11/2024
+INSERT INTO atores VALUES 
+()
