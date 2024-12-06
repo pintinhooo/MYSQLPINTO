@@ -19,12 +19,10 @@ CREATE TABLE veiculo(
     FOREIGN KEY(NIF) REFERENCES cliente(NIF)
 );
 
+# Exercício D
 ALTER TABLE veiculo
 ADD COLUMN ano DATE;
 
-ALTER TABLE veiculo
-ADD CONSTRAINT ano
-FOREIGN KEY (ano) REFERENCES veiculo(ano);
 
 CREATE TABLE cliente(
 	NIF INT,
@@ -49,12 +47,6 @@ FOREIGN KEY(matricula) REFERENCES veiculo(matricula);
 
 ALTER TABLE estacionamento 
 ADD COLUMN ano DATE;
-
-ALTER TABLE estacionamento
-ADD CONSTRAINT ano
-FOREIGN KEY(ano) REFERENCES veiculo(ano);
-
-
 
 CREATE TABLE estaciona(
 	cod INT,
@@ -119,9 +111,33 @@ SELECT veiculo.matricula, veiculo.cor
 FROM veiculo
 LEFT OUTER JOIN estacionamento
 ON veiculo.matricula = estacionamento.matricula
-WHERE num=21;
+WHERE piso = 1;
 
 # EX D
+
+SELECT veiculo.matricula, veiculo.ano
+FROM veiculo
+LEFT OUTER JOIN estacionamento
+ON veiculo.matricula = estacionamento.matricula
+WHERE piso = 1;
+
+# EX E
+
+SELECT estaciona.dataEntrada, estaciona.dataSaida
+FROM estaciona
+LEFT OUTER JOIN veiculo
+ON estaciona.matricula = veiculo.matricula
+WHERE veiculo.matricula = "70-20-ZH";
+
+# EX F
+
+SELECT cliente.nome 
+FROM cliente
+LEFT OUTER JOIN veiculo
+ON cliente.nif = veiculo.nif
+WHERE codmod = 1;
+
+# EX G
 
 
 
